@@ -26,6 +26,12 @@
             validate information above
         @enderror
 
+        @isset($loginError)
+            <br />
+            {{$loginError}}
+            <br />
+        @endisset
+
 
         <button type="submit" class="btn btn-block btn-secondary">Login</button>
 

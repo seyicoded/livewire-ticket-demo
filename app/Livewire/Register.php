@@ -2,7 +2,11 @@
 
 namespace App\Livewire;
 
+use App\Models\User;
 use Livewire\Component;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class Register extends Component
 {
@@ -44,7 +48,23 @@ class Register extends Component
             "form.avatar" => "required",
         ]);
 
-        dd($this->form);
+        // save image
+        $str = Str::random(15);
+        $str = "$str.jpg";
+        // $str = str_random(15);
+        $data = Image::make($this->form['avatar'])->encode("jpg");
+        Storage::disk('public')->put($str, $data);
+
+        // save user
+        User::create([
+            "name" => $this->form['name'],
+            "email" => $this->form['email'],
+            "password" => $this->form['email'],
+            "avatar" => $str
+        ]);
+
+        // redirect to login 
+        return redirect(route('login'));
     }
 
     public function render()

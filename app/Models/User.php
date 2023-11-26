@@ -34,6 +34,10 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    // public function setPasswordAttribute($password){
+    //     return bcrypt($password);
+    // }
+
     /**
      * The attributes that should be cast.
      *

@@ -23,4 +23,8 @@ Route::get('/register', function () {
     return view('guest')->with("type", "register");
 })->name('register');
 
+Route::get('/dashboard', function () {
+    return view('home')->with("type", "dashboard");
+})->name('dashboard');
+
 // Route::livewire("/", "home");

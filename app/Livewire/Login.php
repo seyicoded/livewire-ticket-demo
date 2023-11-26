@@ -3,9 +3,11 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
 
 class Login extends Component
 {
+    public $loginError;
     public $form = [
         "email" => "",
         "password" => ""
@@ -31,6 +33,16 @@ class Login extends Component
             "form.email" => "required",
             "form.password" => "required",
         ]);
+
+        if(Auth::attempt([
+            'email' => $this->form['email'],
+            'password' => $this->form['password'],
+        ])){
+            return redirect(route("dashboard"));
+        }else{
+            // return error 
+            $this->loginError = "Incorrect email or password";
+        }
     }
 
     public function render()
