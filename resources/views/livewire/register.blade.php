@@ -55,7 +55,7 @@
         </div>
         <br />
 
-        <button type="submit" class="btn btn-block btn-secondary">Login</button>
+        <button type="submit" class="btn btn-block btn-secondary">Register</button>
 
     </form>
 

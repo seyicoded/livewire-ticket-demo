@@ -59,7 +59,7 @@ class Register extends Component
         User::create([
             "name" => $this->form['name'],
             "email" => $this->form['email'],
-            "password" => $this->form['email'],
+            "password" => bcrypt($this->form['email']),
             "avatar" => $str
         ]);
 

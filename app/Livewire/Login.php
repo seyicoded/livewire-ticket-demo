@@ -34,10 +34,12 @@ class Login extends Component
             "form.password" => "required",
         ]);
 
-        if(Auth::attempt([
+        $data = Auth::attempt([
             'email' => $this->form['email'],
             'password' => $this->form['password'],
-        ])){
+        ]);
+
+        if($data){
             return redirect(route("dashboard"));
         }else{
             // return error 

@@ -25,6 +25,6 @@ Route::get('/register', function () {
 
 Route::get('/dashboard', function () {
     return view('home')->with("type", "dashboard");
-})->name('dashboard');
+})->name('dashboard')->middleware('auth');
 
 // Route::livewire("/", "home");
